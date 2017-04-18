@@ -44,6 +44,9 @@
     "react-native-lightbox": "oblador/react-native-lightbox#c84a8543d4511fe6a44c3d7820747c9c1bddd875",
     "react-native-parsed-text": "0.0.16",
     "shallowequal": "0.2.2",
-    "uuid": "3.0.1"
+    "uuid": "3.0.1",
+    "react-native-image-crop-picker": "^0.12.10",
+    "react-native-maps": "^0.14.0",
+    "react-native-baidu-map": "^0.6.0"
   }
 }

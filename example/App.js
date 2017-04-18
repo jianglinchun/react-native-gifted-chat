@@ -9,6 +9,12 @@ import {
 import {GiftedChat, Actions, Bubble} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
+import ImagePicker from 'react-native-image-crop-picker';
+import {
+  MapView,
+  MapTypes,
+  Geolocation
+} from 'react-native-baidu-map';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -136,11 +142,11 @@ export default class Example extends React.Component {
       );
     }
     const options = {
-      'Action 1': (props) => {
-        alert('option 1');
+      'Send My Location': (props) => {
+        this.sendMyLocation();
       },
-      'Action 2': (props) => {
-        alert('option 2');
+      'Send Picture': (props) => {
+        this.selectPicture();
       },
       'Cancel': () => {},
     };
@@ -150,6 +156,39 @@ export default class Example extends React.Component {
         options={options}
       />
     );
+  }
+
+  sendMyLocation() {
+    Geolocation.getCurrentPosition().then((gps)=>{
+      console.log(JSON.stringify(gps));
+      this.onSend([{
+        _id: Math.round(Math.random() * 1000000),
+        user: {
+          _id: 1
+        },
+        location: gps
+      }]);
+    }).catch((e)=>{
+      console.log(e);
+    });
+  }
+
+  selectPicture() {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: false
+    }).then(image => {
+      this.onSend([{
+        _id: Math.round(Math.random() * 1000000),
+        user: {
+          _id: 1
+        },
+        image: image.path
+      }]);
+    }).catch((e)=>{
+
+    });
   }
 
   renderBubble(props) {
