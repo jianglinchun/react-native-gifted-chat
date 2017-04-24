@@ -27,6 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new PickerPackage(),
+            new com.zmxv.RNSound.RNSoundPackage(),
+            new com.oblador.vectoricons.VectorIconsPackage(),
             new BaiduMapPackage(getApplicationContext())
       );
     }
