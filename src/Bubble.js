@@ -9,6 +9,8 @@ import {
 
 import MessageText from './MessageText';
 import MessageImage from './MessageImage';
+import MessageVideo from './MessageVideo';
+import MessageAudio from './MessageAudio';
 import Time from './Time';
 
 import { isSameUser, isSameDay, warnDeprecated } from './utils';
@@ -51,6 +53,28 @@ export default class Bubble extends React.Component {
         return this.props.renderMessageImage(messageImageProps);
       }
       return <MessageImage {...messageImageProps}/>;
+    }
+    return null;
+  }
+
+  renderMessageAudio() {
+    if(this.props.currentMessage.audio){
+      const {containerStyle, wrapperStyle, ...messageAudioProps} = this.props;
+      if (this.props.renderMessageAudio) {
+        return this.props.renderMessageAudio(messageAudioProps);
+      }
+      return <MessageAudio {...messageAudioProps}/>;
+    }
+    return null;
+  }
+
+  renderMessageVideo() {
+    if(this.props.currentMessage.video){
+      const {containerStyle, wrapperStyle, ...messageVideoProps} = this.props;
+      if (this.props.renderMessageVideo) {
+        return this.props.renderMessageVideo(messageVideoProps);
+      }
+      return <MessageVideo {...messageVideoProps}/>;
     }
     return null;
   }
@@ -128,6 +152,8 @@ export default class Bubble extends React.Component {
             <View>
               {this.renderCustomView()}
               {this.renderMessageImage()}
+              {this.renderMessageVideo()}
+              {this.renderMessageAudio()}
               {this.renderMessageText()}
               <View style={styles.bottom}>
                 {this.renderTime()}
@@ -228,6 +254,8 @@ Bubble.propTypes = {
   touchableProps: React.PropTypes.object,
   onLongPress: React.PropTypes.func,
   renderMessageImage: React.PropTypes.func,
+  renderMessageVideo: React.propTypes.func,
+  renderMessageAudio: React.propTypes.func,
   renderMessageText: React.PropTypes.func,
   renderCustomView: React.PropTypes.func,
   renderTime: React.PropTypes.func,
