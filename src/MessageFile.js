@@ -3,6 +3,7 @@ import {
   Image,
   StyleSheet,
   View,
+  Text,
   Dimensions,
 } from 'react-native';
 
