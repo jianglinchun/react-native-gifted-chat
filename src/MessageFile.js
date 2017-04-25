@@ -12,7 +12,7 @@ export default class MessageFile extends React.Component {
 
     return (
       <View style={[styles.container, this.props.containerStyle]}>
-        <Text>Audio</Text>
+        <Text>File</Text>
       </View>
     );
   }
