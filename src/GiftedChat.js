@@ -16,6 +16,9 @@ import Actions from './Actions';
 import Avatar from './Avatar';
 import Bubble from './Bubble';
 import MessageImage from './MessageImage';
+import MessageAudio from './MessageAudio';
+import MessageVideo from './MessageVideo';
+import MessageFile from './MessageFile';
 import MessageText from './MessageText';
 import Composer from './Composer';
 import Day from './Day';
@@ -478,6 +481,9 @@ GiftedChat.defaultProps = {
   renderChatFooter: null,
   renderMessageText: null,
   renderMessageImage: null,
+  renderMessageAudio: null,
+  renderMessageVideo: null,
+  renderMessageFile: null,
   renderComposer: null,
   renderCustomView: null,
   renderDay: null,
@@ -509,6 +515,9 @@ GiftedChat.propTypes = {
   renderChatFooter: React.PropTypes.func,
   renderMessageText: React.PropTypes.func,
   renderMessageImage: React.PropTypes.func,
+  renderMessageAudio: React.PropTypes.func,
+  renderMessageVideo: React.PropTypes.func,
+  renderMessageFile: React.PropTypes.func,
   renderComposer: React.PropTypes.func,
   renderCustomView: React.PropTypes.func,
   renderDay: React.PropTypes.func,

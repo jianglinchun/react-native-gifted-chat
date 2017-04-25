@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import {GiftedChat, Actions, Bubble} from 'react-native-gifted-chat';
+import {GiftedChat, Actions, Bubble} from '..\index.js';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -83,7 +83,7 @@ export default class Example extends React.Component {
 
   answerDemo(messages) {
     if (messages.length > 0) {
-      if ((messages[0].image || messages[0].location) || !this._isAlright) {
+      if ((messages[0].image || messages[0].location || messages[0].video || messages[0].audio || messages[0].file) || !this._isAlright) {
         this.setState((previousState) => {
           return {
             typingText: 'React Native is typing'
@@ -148,6 +148,15 @@ export default class Example extends React.Component {
       'Send Picture': (props) => {
         this.selectPicture();
       },
+      'Send Audio': (props) => {
+        this.selectAudio();
+      },
+      'Send Video': (props) => {
+        this.selectVideo();
+      },
+      'Send File': (props) => {
+        this.selectFile();
+      },
       'Cancel': () => {},
     };
     return (
@@ -156,6 +165,36 @@ export default class Example extends React.Component {
         options={options}
       />
     );
+  }
+
+  selectAudio() {
+    this.onSend([{
+      _id: Math.round(Math.random() * 1000000),
+      user: {
+        _id: 1
+      },
+      audio: {}
+    }]);
+  }
+
+  selectVideo() {
+    this.onSend([{
+      _id: Math.round(Math.random() * 1000000),
+      user: {
+        _id: 1
+      },
+      video: {}
+    }]);
+  }
+
+  selectFile() {
+    this.onSend([{
+      _id: Math.round(Math.random() * 1000000),
+      user: {
+        _id: 1
+      },
+      file: {}
+    }]);
   }
 
   sendMyLocation() {

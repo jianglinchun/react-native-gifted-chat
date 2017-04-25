@@ -86,7 +86,7 @@ export default class Bubble extends React.Component {
       if (this.props.renderMessageFile) {
         return this.props.renderMessageFile(messageFileProps);
       }
-      return <renderMessageFile {...messageFileProps}/>;
+      return <MessageFile {...messageFileProps}/>;
     }
     return null;
   }
@@ -242,6 +242,9 @@ Bubble.defaultProps = {
   touchableProps: {},
   onLongPress: null,
   renderMessageImage: null,
+  renderMessageVideo: null,
+  renderMessageAudio: null,
+  renderMessageFile: null,
   renderMessageText: null,
   renderCustomView: null,
   renderTime: null,
