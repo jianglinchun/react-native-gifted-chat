@@ -7,13 +7,15 @@ import {
   Dimensions,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 export default class MessageFile extends React.Component {
   render() {
     const { width, height } = Dimensions.get('window');
 
     return (
       <View style={[styles.container, this.props.containerStyle]}>
-        <Text>File</Text>
+        <Icon name="file-o" size={30}/>
       </View>
     );
   }
