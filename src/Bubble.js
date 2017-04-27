@@ -11,6 +11,7 @@ import MessageText from './MessageText';
 import MessageImage from './MessageImage';
 import MessageVideo from './MessageVideo';
 import MessageAudio from './MessageAudio';
+import MessageLocation from './MessageLocation'
 import MessageFile from './MessageFile';
 import Time from './Time';
 
@@ -87,6 +88,17 @@ export default class Bubble extends React.Component {
         return this.props.renderMessageFile(messageFileProps);
       }
       return <MessageFile {...messageFileProps}/>;
+    }
+    return null;
+  }
+
+  renderMessageLocation() {
+    if(this.props.currentMessage.location){
+      const {containerStyle, wrapperStyle, ...messageLocationProps} = this.props;
+      if (this.props.renderMessageFile) {
+        return this.props.renderMessageLocation(messageLocationProps);
+      }
+      return <MessageLocation {...messageLocationProps}/>;
     }
     return null;
   }
@@ -168,6 +180,7 @@ export default class Bubble extends React.Component {
               {this.renderMessageAudio()}
               {this.renderMessageFile()}
               {this.renderMessageText()}
+              {this.renderMessageLocation()}
               <View style={styles.bottom}>
                 {this.renderTime()}
                 {this.renderTicks()}
@@ -245,6 +258,7 @@ Bubble.defaultProps = {
   renderMessageVideo: null,
   renderMessageAudio: null,
   renderMessageFile: null,
+  renderMessageLocation: null,
   renderMessageText: null,
   renderCustomView: null,
   renderTime: null,
@@ -276,6 +290,7 @@ Bubble.propTypes = {
   renderMessageImage: React.PropTypes.func,
   renderMessageVideo: React.PropTypes.func,
   renderMessageAudio: React.PropTypes.func,
+  renderMessageLocation: React.PropTypes.func,
   renderMessageFile: React.PropTypes.func,
   renderMessageText: React.PropTypes.func,
   renderCustomView: React.PropTypes.func,

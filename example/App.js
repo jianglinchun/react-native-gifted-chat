@@ -168,23 +168,41 @@ export default class Example extends React.Component {
   }
 
   selectAudio() {
-    this.onSend([{
-      _id: Math.round(Math.random() * 1000000),
-      user: {
-        _id: 1
-      },
-      audio: {}
-    }]);
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      mediaType: 'any',
+      cropping: false,
+    }).then(audio => {
+      this.onSend([{
+        _id: Math.round(Math.random() * 1000000),
+        user: {
+          _id: 1
+        },
+        audio: audio.path
+      }]);
+    }).catch((e)=>{
+      console.log(e);
+    });
   }
 
   selectVideo() {
-    this.onSend([{
-      _id: Math.round(Math.random() * 1000000),
-      user: {
-        _id: 1
-      },
-      video: {}
-    }]);
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      mediaType: 'video',
+      cropping: false,
+    }).then(video => {
+      this.onSend([{
+        _id: Math.round(Math.random() * 1000000),
+        user: {
+          _id: 1
+        },
+        video: video.path
+      }]);
+    }).catch((e)=>{
+      console.log(e);
+    });
   }
 
   selectFile() {
@@ -216,7 +234,8 @@ export default class Example extends React.Component {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
-      cropping: false
+      mediaType: 'photo',
+      cropping: false,
     }).then(image => {
       this.onSend([{
         _id: Math.round(Math.random() * 1000000),
@@ -226,7 +245,7 @@ export default class Example extends React.Component {
         image: image.path
       }]);
     }).catch((e)=>{
-
+      console.log(e);
     });
   }
 

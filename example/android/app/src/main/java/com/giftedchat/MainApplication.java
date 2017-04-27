@@ -29,6 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
             new PickerPackage(),
             new com.zmxv.RNSound.RNSoundPackage(),
             new com.oblador.vectoricons.VectorIconsPackage(),
+            new com.brentvatne.react.ReactVideoPackage(),
+            new com.RNFetchBlob.RNFetchBlobPackage(),
             new BaiduMapPackage(getApplicationContext())
       );
     }
